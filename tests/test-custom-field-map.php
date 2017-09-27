@@ -66,8 +66,9 @@ class Custom_Field_Map_Tests extends WP_UnitTestCase
 		$res = ob_get_contents();
 		ob_end_clean();
 
-		$this->assertRegExp( '#id="custom-field-map-lat"#', $res );
-		$this->assertRegExp( '#id="custom-field-map-lng"#', $res );
+		$this->assertRegExp( '#id="hello"#', $res );
+		$this->assertRegExp( '#class="lat"#', $res );
+		$this->assertRegExp( '#class="lng"#', $res );
 		$this->assertRegExp( '#value="">#', $res );
 		$this->assertRegExp( '#value="">#', $res );
 	}
