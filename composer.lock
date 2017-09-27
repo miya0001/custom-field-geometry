@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "69f15df6471e4b7c0d30027662f161eb",
+    "content-hash": "9cf5205b4e166ea46f5c7f6f333ca215",
     "packages": [
         {
             "name": "miya/custom-field",
