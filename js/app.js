@@ -16,8 +16,10 @@ if ( latlng ) {
 }
 
 // Override the lat and lng from post_meta
-config.lat  = jQuery( '#' + custom_field_id + ' .lat' ).val();
-config.lng  = jQuery( '#' + custom_field_id + ' .lng' ).val();
-config.zoom = jQuery( '#' + custom_field_id + ' .zoom' ).val();
+if ( jQuery( '#' + custom_field_id + ' .lat' ).val() && jQuery( '#' + custom_field_id + ' .lng' ).val() ) {
+	config.lat  = jQuery( '#' + custom_field_id + ' .lat' ).val();
+	config.lng  = jQuery( '#' + custom_field_id + ' .lng' ).val();
+	config.zoom = jQuery( '#' + custom_field_id + ' .zoom' ).val();
+}
 
 riot.mount( "map", config )
