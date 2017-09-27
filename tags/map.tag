@@ -89,7 +89,6 @@
 				feature = layer.feature = layer.feature || {};
 			feature.type = feature.type || "Feature";
 			var props = feature.properties = feature.properties || {};
-			props.icon = 0;
 
             if ( type === 'marker' ) {
 				props.icon = icon_num % icons.length;
