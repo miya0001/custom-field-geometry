@@ -5,3 +5,4 @@ tests
 .travis.yml
 phpunit.xml.dist
 composer.lock
+node_modules
