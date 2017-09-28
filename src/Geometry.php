@@ -22,21 +22,21 @@ class Geometry extends \Miya\WP\Custom_Field
 	{
 		wp_enqueue_script(
 			'riot',
-			'https://cdn.jsdelivr.net/npm/riot@3.6/riot+compiler.min.js',
+			plugins_url( 'lib/riot/riot+compiler.min.js', dirname( __FILE__ ) ),
 			array(),
 			false,
 			true
 		);
 		wp_enqueue_script(
 			'leaflet',
-			'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js',
+			plugins_url( 'lib/leaflet/dist/leaflet.js', dirname( __FILE__ ) ),
 			array(),
 			false,
 			true
 		);
 		wp_enqueue_script(
 			'leaflet-draw',
-			'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.12/leaflet.draw.js',
+			plugins_url( 'lib/leaflet-draw/dist/leaflet.draw.js', dirname( __FILE__ ) ),
 			array( 'leaflet' ),
 			false,
 			true
@@ -51,13 +51,13 @@ class Geometry extends \Miya\WP\Custom_Field
 
 		wp_enqueue_style(
 			'leaflet',
-			'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css',
+			plugins_url( 'lib/leaflet/dist/leaflet.css', dirname( __FILE__ ) ),
 			array(),
 			false
 		);
 		wp_enqueue_style(
 			'leaflet-draw',
-			'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.12/leaflet.draw.css',
+			plugins_url( 'lib/leaflet-draw/dist/leaflet.draw.css', dirname( __FILE__ ) ),
 			array(),
 			false
 		);
@@ -89,7 +89,7 @@ class Geometry extends \Miya\WP\Custom_Field
 				name="<?php echo esc_attr( $this->id ); ?>[geojson]"
 				value="<?php echo @esc_attr( $values['geojson'] ); ?>">
 
-			<script>var custom_field_id = '<?php echo esc_js( $this->id ); ?>';</script>
+			<script>var custom_field_geometry_id = '<?php echo esc_js( $this->id ); ?>';</script>
 			<script src="<?php echo esc_url( $tag ); ?>" type="riot/tag"></script>
 		<?php
 	}
@@ -102,8 +102,8 @@ class Geometry extends \Miya\WP\Custom_Field
 	 */
 	public function save( $post_id )
 	{
-		if ( isset( $_POST[$this->id] ) ) {
-			update_post_meta( $post_id, '_' . $this->id, $_POST[$this->id] );
+		if ( isset( $_POST[ $this->id ] ) ) {
+			update_post_meta( $post_id, '_' . $this->id, $_POST[ $this->id ] );
 		}
 	}
 }

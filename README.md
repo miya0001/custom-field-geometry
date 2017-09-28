@@ -6,7 +6,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/miya/custom-field-geometry/v/unstable)](https://packagist.org/packages/miya/custom-field-geometry)
 [![License](https://poser.pugx.org/miya/custom-field-geometry/license)](https://packagist.org/packages/miya/custom-field-geometry)
 
-Add a custom field to save latitude and longitude to the edit screen of the specific post type for WordPress.
+Add a custom field to save geometries to the edit screen of the specific post type for WordPress.
 
 ![](https://www.evernote.com/l/ABWonhEnAJpDvqEwTmDVfIHVcINjPLYqRPAB/image.png)
 

@@ -1,0 +1,24 @@
+{
+  "name": "custom-field-geometry",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "bower install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miya0001/custom-field-geometry.git"
+  },
+  "author": "",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/miya0001/custom-field-geometry/issues"
+  },
+  "homepage": "https://github.com/miya0001/custom-field-geometry#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.8.2"
+  }
+}
