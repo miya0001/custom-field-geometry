@@ -103,7 +103,7 @@
             featureGroup.addLayer(layer);
         } );
 
-		var geojson = jQuery( '#' + custom_field_id + ' .geojson' ).val();
+		var geojson = jQuery( '#' + custom_field_geometry_id + ' .geojson' ).val();
 		if ( geojson ) {
 			var geojsonLayer = L.geoJson( JSON.parse( geojson ) );
 			geojsonLayer.eachLayer( function( l ) {
@@ -132,25 +132,25 @@
 					lng = lng + 360
 				}
 			}
-			jQuery( '#' + custom_field_id + ' .lat' ).val( lat );
-			jQuery( '#' + custom_field_id + ' .lng' ).val( lng );
-			jQuery( '#' + custom_field_id + ' .zoom' ).val( zoom );
+			jQuery( '#' + custom_field_geometry_id + ' .lat' ).val( lat );
+			jQuery( '#' + custom_field_geometry_id + ' .lng' ).val( lng );
+			jQuery( '#' + custom_field_geometry_id + ' .zoom' ).val( zoom );
 			window.localStorage.setItem( 'location', zoom + ',' + lat + ',' + lng )
 		} )
 
 		jQuery( '#post' ).on( 'submit', function() {
-			if ( ! jQuery( '#' + custom_field_id + ' .lat' ).val() ) {
-				jQuery( '#' + custom_field_id + ' .lat' ).val( opts.lat );
+			if ( ! jQuery( '#' + custom_field_geometry_id + ' .lat' ).val() ) {
+				jQuery( '#' + custom_field_geometry_id + ' .lat' ).val( opts.lat );
 			}
-			if ( ! jQuery( '#' + custom_field_id + ' .lng' ).val() ) {
-				jQuery( '#' + custom_field_id + ' .lng' ).val( opts.lng );
+			if ( ! jQuery( '#' + custom_field_geometry_id + ' .lng' ).val() ) {
+				jQuery( '#' + custom_field_geometry_id + ' .lng' ).val( opts.lng );
 			}
-			if ( ! jQuery( '#' + custom_field_id + ' .zoom' ).val() ) {
-				jQuery( '#' + custom_field_id + ' .zoom' ).val( opts.zoom );
+			if ( ! jQuery( '#' + custom_field_geometry_id + ' .zoom' ).val() ) {
+				jQuery( '#' + custom_field_geometry_id + ' .zoom' ).val( opts.zoom );
 			}
 
 			var geojson = JSON.stringify( featureGroup.toGeoJSON() );
-			jQuery( '#' + custom_field_id + ' .geojson' ).val( geojson );
+			jQuery( '#' + custom_field_geometry_id + ' .geojson' ).val( geojson );
 		} );
 	</script>
 </map>
