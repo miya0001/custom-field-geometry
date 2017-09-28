@@ -9,7 +9,7 @@ class Custom_Field_Map_Tests extends WP_UnitTestCase
 	public
 	function test_enqueue_fires_on_post()
 	{
-		$map = new Miya\WP\Custom_Field\Map( 'map', 'Map' );
+		$map = new Miya\WP\Custom_Field\Geometry( 'map', 'Map' );
 		$map->add( 'post' );
 
 		convert_to_screen( 'post' );
@@ -29,7 +29,7 @@ class Custom_Field_Map_Tests extends WP_UnitTestCase
 	{
 		register_post_type( 'my-post-type' );
 
-		$map = new Miya\WP\Custom_Field\Map( 'map', 'Map' );
+		$map = new Miya\WP\Custom_Field\Geometry( 'map', 'Map' );
 		$map->add( array( 'page', 'my-post-type' ) );
 
 		$GLOBALS['current_screen'] = convert_to_screen( 'my-post-type' );
@@ -47,7 +47,7 @@ class Custom_Field_Map_Tests extends WP_UnitTestCase
 	{
 		global $wp_meta_boxes;
 
-		$test = new Miya\WP\Custom_Field\Map( 'hello', 'Hello' );
+		$test = new Miya\WP\Custom_Field\Geometry( 'hello', 'Hello' );
 		$test->add( 'my-post-type' );
 
 		do_action( 'add_meta_boxes' );
