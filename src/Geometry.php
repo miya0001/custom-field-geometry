@@ -1,16 +1,16 @@
 <?php
 /**
- * Custom Field Map
+ * Custom Field Geometry
  *
  * @package   miya/custom-field-map
  * @author    Takayuki Miyauchi
  * @license   GPL v2
- * @link      https://github.com/miya0001/custom-field-map
+ * @link      https://github.com/miya0001/custom-field-geometry
  */
 
 namespace Miya\WP\Custom_Field;
 
-class Map extends \Miya\WP\Custom_Field
+class Geometry extends \Miya\WP\Custom_Field
 {
 	/**
 	 * Fires at the `admin_enqueue_scripts` hook.
