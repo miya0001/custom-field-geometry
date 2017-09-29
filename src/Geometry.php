@@ -89,7 +89,10 @@ class Geometry extends \Miya\WP\Custom_Field
 				name="<?php echo esc_attr( $this->id ); ?>[geojson]"
 				value="<?php echo @esc_attr( $values['geojson'] ); ?>">
 
-			<script>var custom_field_geometry_id = '<?php echo esc_js( $this->id ); ?>';</script>
+			<script>
+				var custom_field_geometry_id = '<?php echo esc_js( $this->id ); ?>';
+				var custom_field_geometry_options = <?php echo json_encode( $this->options ); ?>;
+			</script>
 			<script src="<?php echo esc_url( $tag ); ?>" type="riot/tag"></script>
 		<?php
 	}

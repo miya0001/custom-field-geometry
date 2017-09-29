@@ -1,13 +1,26 @@
-var config = {
+var config = custom_field_geometry_options;
+
+var defaults = {
 	"lat": 0,
 	"lng": 0,
 	"zoom": 1,
-	"layers": [ {
-	"name": "Open Street Map",
-	"tile": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-		"attribution": "OpenStreetMap Contributers",
-		"attribution_url": "http://osm.org/copyright"
-	} ]
+	"layers": [
+		{
+			"name": "Open Street Map",
+			"tile": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+				"attribution": "OpenStreetMap Contributers",
+				"attribution_url": "http://osm.org/copyright"
+		}
+	],
+	"controls": {
+		circle: false,
+		circlemarker: false
+	}
+}
+
+for ( var prop in defaults ) {
+    if ( prop in config ) { continue; }
+    config[prop] = defaults[prop];
 }
 
 const latlng = localStorage.getItem( 'location' )

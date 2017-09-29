@@ -43,10 +43,7 @@
 		var featureGroup = L.featureGroup().addTo(map);
 
 		var drawControl = new L.Control.Draw( {
-			draw: {
-				circle: false,
-				circlemarker: false
-			},
+			draw: opts.controls,
 			edit: {
 				featureGroup: featureGroup
 			}
