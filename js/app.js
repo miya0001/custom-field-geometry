@@ -8,8 +8,8 @@ var defaults = {
 		{
 			"name": "Open Street Map",
 			"tile": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-				"attribution": "OpenStreetMap Contributers",
-				"attribution_url": "http://osm.org/copyright"
+			"attribution": "OpenStreetMap Contributers",
+			"attribution_url": "http://osm.org/copyright"
 		}
 	],
 	"controls": {
