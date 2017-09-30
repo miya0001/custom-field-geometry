@@ -87,10 +87,10 @@ class Geometry extends \Miya\WP\Custom_Field
 	 */
 	public function form( $post, $args )
 	{
-		$tag = plugins_url( 'tags/map.tag', dirname( __FILE__ ) );
+		$tag = plugins_url( 'tags/geometry-admin.tag', dirname( __FILE__ ) );
 		$values = get_post_meta( get_the_ID(), $this->id, true );
 		?>
-			<div id="<?php echo esc_attr( $this->id ); ?>" style="width=100%; height:500px; position:relative;"><map></map></div>
+			<div id="<?php echo esc_attr( $this->id ); ?>" style="width=100%; height:500px; position:relative;"><geometry-admin></geometry-admin></div>
 			<input class="lat" type="hidden"
 				name="<?php echo esc_attr( $this->id ); ?>[lat]"
 				value="<?php echo @esc_attr( $values['lat'] ); ?>">

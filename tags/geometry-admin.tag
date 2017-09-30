@@ -1,4 +1,4 @@
-<map class="map" style="width: 100%; height: 100%;">
+<geometry-admin style="width: 100%; height: 100%;">
 	<script>
 		window.icon_num = 0;
 
@@ -150,4 +150,4 @@
 			document.querySelector( '#' + custom_field_geometry_id + ' .geojson' ).value = geojson;
 		} );
 	</script>
-</map>
+</geometry-admin>

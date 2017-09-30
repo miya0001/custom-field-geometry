@@ -35,4 +35,4 @@ if ( document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value &&
 	config.zoom = document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value;
 }
 
-riot.mount( "map", config )
+riot.mount( "geometry-admin", config )
