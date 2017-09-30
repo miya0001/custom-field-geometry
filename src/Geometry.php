@@ -12,6 +12,40 @@ namespace Miya\WP\Custom_Field;
 
 class Geometry extends \Miya\WP\Custom_Field
 {
+	public function __construct( $id, $title, $options = array() )
+	{
+		parent::__construct( $id, $title, $options );
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ), 9 );
+	}
+
+	public function register_scripts()
+	{
+		wp_register_script(
+			'riot',
+			plugins_url( 'lib/riot/riot+compiler.min.js', dirname( __FILE__ ) ),
+			array( 'jquery' ),
+			false,
+			true
+		);
+
+		wp_register_script(
+			'leaflet',
+			plugins_url( 'lib/leaflet/dist/leaflet.js', dirname( __FILE__ ) ),
+			array(),
+			false,
+			true
+		);
+
+		wp_register_style(
+			'leaflet',
+			plugins_url( 'lib/leaflet/dist/leaflet.css', dirname( __FILE__ ) ),
+			array(),
+			false
+		);
+	}
+
 	/**
 	 * Fires at the `admin_enqueue_scripts` hook.
 	 *
@@ -21,26 +55,13 @@ class Geometry extends \Miya\WP\Custom_Field
 	public function admin_enqueue_scripts( $hook )
 	{
 		wp_enqueue_script(
-			'riot',
-			plugins_url( 'lib/riot/riot+compiler.min.js', dirname( __FILE__ ) ),
-			array(),
-			false,
-			true
-		);
-		wp_enqueue_script(
-			'leaflet',
-			plugins_url( 'lib/leaflet/dist/leaflet.js', dirname( __FILE__ ) ),
-			array(),
-			false,
-			true
-		);
-		wp_enqueue_script(
 			'leaflet-draw',
 			plugins_url( 'lib/leaflet-draw/dist/leaflet.draw.js', dirname( __FILE__ ) ),
 			array( 'leaflet' ),
 			false,
 			true
 		);
+
 		wp_enqueue_script(
 			'app',
 			plugins_url( 'js/app.js', dirname( __FILE__ ) ),
@@ -50,15 +71,9 @@ class Geometry extends \Miya\WP\Custom_Field
 		);
 
 		wp_enqueue_style(
-			'leaflet',
-			plugins_url( 'lib/leaflet/dist/leaflet.css', dirname( __FILE__ ) ),
-			array(),
-			false
-		);
-		wp_enqueue_style(
 			'leaflet-draw',
 			plugins_url( 'lib/leaflet-draw/dist/leaflet.draw.css', dirname( __FILE__ ) ),
-			array(),
+			array( 'leaflet' ),
 			false
 		);
 	}
