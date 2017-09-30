@@ -73,7 +73,7 @@ class Geometry extends \Miya\WP\Custom_Field
 	public function form( $post, $args )
 	{
 		$tag = plugins_url( 'tags/map.tag', dirname( __FILE__ ) );
-		$values = get_post_meta( get_the_ID(), '_' . $this->id, true );
+		$values = get_post_meta( get_the_ID(), $this->id, true );
 		?>
 			<div id="<?php echo esc_attr( $this->id ); ?>" style="width=100%; height:500px; position:relative;"><map></map></div>
 			<input class="lat" type="hidden"
@@ -106,7 +106,7 @@ class Geometry extends \Miya\WP\Custom_Field
 	public function save( $post_id )
 	{
 		if ( isset( $_POST[ $this->id ] ) ) {
-			update_post_meta( $post_id, '_' . $this->id, $_POST[ $this->id ] );
+			update_post_meta( $post_id, $this->id, $_POST[ $this->id ] );
 		}
 	}
 }
