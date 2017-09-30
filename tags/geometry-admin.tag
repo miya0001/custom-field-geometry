@@ -135,7 +135,7 @@
 			window.localStorage.setItem( 'location', zoom + ',' + lat + ',' + lng )
 		} )
 
-		document.querySelector( '#post' ).on( 'submit', function() {
+		document.querySelector( '#post' ).addEventListener( 'submit', function() {
 			if ( ! document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value ) {
 				document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value = opts.lat;
 			}
@@ -143,7 +143,7 @@
 				document.querySelector( '#' + custom_field_geometry_id + ' .lng' ).value = opts.lng;
 			}
 			if ( ! document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value ) {
-				document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value opts.zoom;
+				document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value = opts.zoom;
 			}
 
 			var geojson = JSON.stringify( featureGroup.toGeoJSON() );
