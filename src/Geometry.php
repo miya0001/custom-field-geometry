@@ -25,7 +25,7 @@ class Geometry extends \Miya\WP\Custom_Field
 		wp_register_script(
 			'riot',
 			plugins_url( 'lib/riot/riot+compiler.min.js', dirname( __FILE__ ) ),
-			array( 'jquery' ),
+			array(),
 			false,
 			true
 		);
@@ -65,7 +65,7 @@ class Geometry extends \Miya\WP\Custom_Field
 		wp_enqueue_script(
 			'app',
 			plugins_url( 'js/app.js', dirname( __FILE__ ) ),
-			array( 'jquery', 'riot', 'leaflet-draw' ),
+			array( 'riot', 'leaflet-draw' ),
 			false,
 			true
 		);

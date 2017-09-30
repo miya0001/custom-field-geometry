@@ -72,7 +72,7 @@
 			} ) )
 		}
 
-        map.on( L.Draw.Event.DRAWSTART, function( e ) {
+		map.on( L.Draw.Event.DRAWSTART, function( e ) {
 			drawControl.setDrawingOptions( {
 				marker: {
 					icon: icons[ icon_num % icons.length ]
@@ -80,14 +80,14 @@
 			} );
 		} );
 
-        map.on( L.Draw.Event.CREATED, function( e ) {
-            var type = e.layerType,
-                layer = e.layer,
+		map.on( L.Draw.Event.CREATED, function( e ) {
+			var type = e.layerType,
+				layer = e.layer,
 				feature = layer.feature = layer.feature || {};
 			feature.type = feature.type || "Feature";
 			var props = feature.properties = feature.properties || {};
 
-            if ( type === 'marker' ) {
+			if ( type === 'marker' ) {
 				props.icon = icon_num % icons.length;
 				layer.setIcon( icons[ props.icon ] );
 				layer.on( 'click', function( e ) {
@@ -96,11 +96,11 @@
 					e.target.setIcon( icons[ n ] );
 					props.icon = n;
 				} )
-            }
-            featureGroup.addLayer(layer);
-        } );
+			}
+			featureGroup.addLayer(layer);
+		} );
 
-		var geojson = jQuery( '#' + custom_field_geometry_id + ' .geojson' ).val();
+		var geojson = document.querySelector( '#' + custom_field_geometry_id + ' .geojson' ).value;
 		if ( geojson ) {
 			var geojsonLayer = L.geoJson( JSON.parse( geojson ) );
 			geojsonLayer.eachLayer( function( l ) {
@@ -129,25 +129,25 @@
 					lng = lng + 360
 				}
 			}
-			jQuery( '#' + custom_field_geometry_id + ' .lat' ).val( lat );
-			jQuery( '#' + custom_field_geometry_id + ' .lng' ).val( lng );
-			jQuery( '#' + custom_field_geometry_id + ' .zoom' ).val( zoom );
+			document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value = lat;
+			document.querySelector( '#' + custom_field_geometry_id + ' .lng' ).value = lng;
+			document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value = zoom;
 			window.localStorage.setItem( 'location', zoom + ',' + lat + ',' + lng )
 		} )
 
-		jQuery( '#post' ).on( 'submit', function() {
-			if ( ! jQuery( '#' + custom_field_geometry_id + ' .lat' ).val() ) {
-				jQuery( '#' + custom_field_geometry_id + ' .lat' ).val( opts.lat );
+		document.querySelector( '#post' ).on( 'submit', function() {
+			if ( ! document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value ) {
+				document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value = opts.lat;
 			}
-			if ( ! jQuery( '#' + custom_field_geometry_id + ' .lng' ).val() ) {
-				jQuery( '#' + custom_field_geometry_id + ' .lng' ).val( opts.lng );
+			if ( ! document.querySelector( '#' + custom_field_geometry_id + ' .lng' ).value ) {
+				document.querySelector( '#' + custom_field_geometry_id + ' .lng' ).value = opts.lng;
 			}
-			if ( ! jQuery( '#' + custom_field_geometry_id + ' .zoom' ).val() ) {
-				jQuery( '#' + custom_field_geometry_id + ' .zoom' ).val( opts.zoom );
+			if ( ! document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value ) {
+				document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value opts.zoom;
 			}
 
 			var geojson = JSON.stringify( featureGroup.toGeoJSON() );
-			jQuery( '#' + custom_field_geometry_id + ' .geojson' ).val( geojson );
+			document.querySelector( '#' + custom_field_geometry_id + ' .geojson' ).value = geojson;
 		} );
 	</script>
 </map>

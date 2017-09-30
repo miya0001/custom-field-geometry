@@ -29,10 +29,10 @@ if ( latlng ) {
 }
 
 // Override the lat and lng from post_meta
-if ( jQuery( '#' + custom_field_geometry_id + ' .lat' ).val() && jQuery( '#' + custom_field_geometry_id + ' .lng' ).val() ) {
-	config.lat  = jQuery( '#' + custom_field_geometry_id + ' .lat' ).val();
-	config.lng  = jQuery( '#' + custom_field_geometry_id + ' .lng' ).val();
-	config.zoom = jQuery( '#' + custom_field_geometry_id + ' .zoom' ).val();
+if ( document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value && document.querySelector( '#' + custom_field_geometry_id + ' .lng' ).value ) {
+	config.lat  = document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value;
+	config.lng  = document.querySelector( '#' + custom_field_geometry_id + ' .lng' ).value;
+	config.zoom = document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value;
 }
 
 riot.mount( "map", config )
