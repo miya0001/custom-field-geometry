@@ -20,6 +20,22 @@ class Geometry extends \Miya\WP\Custom_Field
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ), 9 );
 	}
 
+	public function add( $post_type )
+	{
+		parent::add( $post_type );
+		$meta_id = $this->id;
+		add_action( 'rest_api_init', function() use ( $post_type, $meta_id ) {
+			register_rest_field( $post_type, 'geojson', array(
+					'get_callback' => function( $object ) use ( $meta_id ) {
+						$meta = get_post_meta( $object['id'], $meta_id, true );
+						return $meta['geojson'];
+					},
+					'schema' => null,
+				)
+			);
+		} );
+	}
+
 	public function register_scripts()
 	{
 		wp_register_script(
