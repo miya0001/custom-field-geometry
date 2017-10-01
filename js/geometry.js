@@ -2,10 +2,12 @@ function Geometry( selector, opts ) {}
 
 Geometry.prototype.init = function() {
 	var el = document.querySelectorAll( '.cf-geometry' );
-	var maps = {};
+	var maps = [];
 	for ( var i = 0; i < el.length; i++ ) {
-		var id = el[i].getAttribute( 'data-id' );
-		maps[id] = this.display( el[i] );
+		var id = el[i].getAttribute( 'data-post-id' );
+		var map = this.display( el[i] );
+		map.postId = id;
+		maps.push( map )
 	}
 	return maps;
 }

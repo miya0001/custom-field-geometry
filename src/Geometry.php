@@ -54,18 +54,24 @@ class Geometry extends \Miya\WP\Custom_Field
 			return;
 		}
 
-		$map = sprintf(
-			'<div class="cf-geometry" data-id="%1$s" data-lat="%2$s" data-lng="%3$s"
-					data-zoom="%4$d" data-geojson="%5$s" style="%6$s"></div>',
-			esc_attr( $this->id . '-' . $post_id ),
-			esc_attr( $meta['lat'] ),
-			esc_attr( $meta['lng'] ),
-			esc_attr( $meta['zoom'] ),
-			esc_attr( $meta['geojson'] ),
-			"width: 100%%; height: 300px;"
+		$atts = array(
+			'class' => 'cf-geometry',
+			'data-id' => $this->id,
+			'data-post-id' => $post_id,
+			'data-lat' => $meta['lat'],
+			'data-lng' => $meta['lng'],
+			'data-zoom' => $meta['zoom'],
+			'data-geojson' => $meta['geojson'],
+			'style' => 'width: 100%%; height: 300px;',
 		);
 
-		return $map;
+		$html = '<div';
+		foreach ( $atts as $name => $value ) {
+			$html .= ' ' . $name . '="' . esc_attr( $value ) . '"';
+		}
+		$html .= '></div>';
+
+		return $html;
 	}
 
 	/**
