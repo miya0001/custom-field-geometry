@@ -30,21 +30,22 @@ class Geometry extends \Miya\WP\Custom_Field
 			true
 		);
 
-		// It always should be loaded.
-		wp_enqueue_script(
-			'custom-field-geometry',
-			plugins_url( 'js/geometry.js', dirname( __FILE__ ) ),
-			array( 'leaflet' ),
-			false,
-			true
-		);
-
 		wp_register_style(
 			'leaflet',
 			plugins_url( 'lib/leaflet/dist/leaflet.css', dirname( __FILE__ ) ),
 			array(),
 			false
 		);
+
+		if ( ! is_admin() ) {
+			wp_enqueue_script(
+				'custom-field-geometry',
+				plugins_url( 'js/geometry.js', dirname( __FILE__ ) ),
+				array( 'leaflet' ),
+				false,
+				true
+			);
+		}
 	}
 
 	public function get_map( $post_id )
