@@ -39,14 +39,6 @@ class Geometry extends \Miya\WP\Custom_Field
 	public function register_scripts()
 	{
 		wp_register_script(
-			'riot',
-			plugins_url( 'lib/riot/riot+compiler.min.js', dirname( __FILE__ ) ),
-			array(),
-			false,
-			true
-		);
-
-		wp_register_script(
 			'leaflet',
 			plugins_url( 'lib/leaflet/dist/leaflet.js', dirname( __FILE__ ) ),
 			array(),
@@ -81,7 +73,7 @@ class Geometry extends \Miya\WP\Custom_Field
 		wp_enqueue_script(
 			'custom-field-geometry-admin',
 			plugins_url( 'js/admin.js', dirname( __FILE__ ) ),
-			array( 'riot', 'leaflet-draw' ),
+			array( 'leaflet-draw' ),
 			false,
 			true
 		);
@@ -106,7 +98,7 @@ class Geometry extends \Miya\WP\Custom_Field
 		$tag = plugins_url( 'tags/geometry-admin.tag', dirname( __FILE__ ) );
 		$values = get_post_meta( get_the_ID(), $this->id, true );
 		?>
-			<div id="<?php echo esc_attr( $this->id ); ?>" style="width=100%; height:500px; position:relative;"><geometry-admin></geometry-admin></div>
+			<div id="map-<?php echo esc_attr( $this->id ); ?>" style="width=100%; height:500px; position:relative;"></div>
 			<input class="lat" type="hidden"
 				name="<?php echo esc_attr( $this->id ); ?>[lat]"
 				value="<?php echo @esc_attr( $values['lat'] ); ?>">
@@ -124,7 +116,6 @@ class Geometry extends \Miya\WP\Custom_Field
 				var custom_field_geometry_id = '<?php echo esc_js( $this->id ); ?>';
 				var custom_field_geometry_options = <?php echo json_encode( $this->options ); ?>;
 			</script>
-			<script src="<?php echo esc_url( $tag ); ?>" type="riot/tag"></script>
 		<?php
 	}
 

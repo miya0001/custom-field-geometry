@@ -12,7 +12,6 @@
     "tests"
   ],
   "dependencies": {
-    "riot": "^3.7.2",
     "leaflet-draw": "leaflet.draw#^0.4.12"
   }
 }
