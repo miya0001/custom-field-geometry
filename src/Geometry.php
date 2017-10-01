@@ -54,6 +54,14 @@ class Geometry extends \Miya\WP\Custom_Field
 			return;
 		}
 
+		if ( empty( $meta['width'] ) ) {
+			$meta['width'] = '100%';
+		}
+
+		if ( empty( $meta['height'] ) ) {
+			$meta['height'] = '300px';
+		}
+
 		$atts = array(
 			'class' => 'cf-geometry',
 			'data-id' => $this->id,
@@ -62,7 +70,9 @@ class Geometry extends \Miya\WP\Custom_Field
 			'data-lng' => $meta['lng'],
 			'data-zoom' => $meta['zoom'],
 			'data-geojson' => $meta['geojson'],
-			'style' => 'width: 100%%; height: 300px;',
+			'data-width' => $meta['width'],
+			'data-height' => $meta['height'],
+			'style' => "width: {$meta['width']}; height: {$meta['height']};",
 		);
 
 		$html = '<div';
@@ -117,6 +127,12 @@ class Geometry extends \Miya\WP\Custom_Field
 	{
 		$tag = plugins_url( 'tags/geometry-admin.tag', dirname( __FILE__ ) );
 		$values = get_post_meta( get_the_ID(), $this->id, true );
+		if ( empty( $values['width'] ) ) {
+			$values['width'] = '100%';
+		}
+		if ( empty( $values['height'] ) ) {
+			$values['height'] = '300px';
+		}
 		?>
 			<div id="map-<?php echo esc_attr( $this->id ); ?>" style="width=100%; height:500px; position:relative;"></div>
 			<input class="lat" type="hidden"
@@ -131,6 +147,14 @@ class Geometry extends \Miya\WP\Custom_Field
 			<input class="geojson" type="hidden"
 				name="<?php echo esc_attr( $this->id ); ?>[geojson]"
 				value="<?php echo @esc_attr( $values['geojson'] ); ?>">
+
+			<p>Width: <input class="width" type="text"
+				name="<?php echo esc_attr( $this->id ); ?>[width]"
+				value="<?php echo @esc_attr( $values['width'] ); ?>">&nbsp;
+
+			Height: <input class="height" type="text"
+				name="<?php echo esc_attr( $this->id ); ?>[height]"
+				value="<?php echo @esc_attr( $values['height'] ); ?>"></p>
 
 			<script>
 				var custom_field_geometry_id = '<?php echo esc_js( $this->id ); ?>';
