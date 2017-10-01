@@ -72,7 +72,7 @@ class Geometry extends \Miya\WP\Custom_Field
 			'data-geojson' => $meta['geojson'],
 			'data-width' => $meta['width'],
 			'data-height' => $meta['height'],
-			'style' => "width: {$meta['width']}; height: {$meta['height']};",
+			'style' => "width: {$meta['width']}; height: {$meta['height']}; margin: 1em 0;",
 		);
 
 		$html = '<div';
