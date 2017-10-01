@@ -127,6 +127,9 @@ class Geometry extends \Miya\WP\Custom_Field
 	{
 		$tag = plugins_url( 'tags/geometry-admin.tag', dirname( __FILE__ ) );
 		$values = get_post_meta( get_the_ID(), $this->id, true );
+		if ( empty( $values) ) {
+			$values = array();
+		}
 		if ( empty( $values['width'] ) ) {
 			$values['width'] = '100%';
 		}
