@@ -79,8 +79,8 @@ class Geometry extends \Miya\WP\Custom_Field
 		);
 
 		wp_enqueue_script(
-			'app',
-			plugins_url( 'js/app.js', dirname( __FILE__ ) ),
+			'custom-field-geometry-admin',
+			plugins_url( 'js/admin.js', dirname( __FILE__ ) ),
 			array( 'riot', 'leaflet-draw' ),
 			false,
 			true
