@@ -46,12 +46,42 @@ class Geometry extends \Miya\WP\Custom_Field
 			true
 		);
 
+		// It always should be loaded.
+		wp_enqueue_script(
+			'custom-field-geometry',
+			plugins_url( 'js/geometry.js', dirname( __FILE__ ) ),
+			array( 'leaflet' ),
+			false,
+			true
+		);
+
 		wp_register_style(
 			'leaflet',
 			plugins_url( 'lib/leaflet/dist/leaflet.css', dirname( __FILE__ ) ),
 			array(),
 			false
 		);
+	}
+
+	public function get_map( $post_id )
+	{
+		$meta = get_post_meta( $post_id, $this->id, true );
+		if ( ! $meta ) {
+			return;
+		}
+
+		$map = sprintf(
+			'<div class="cf-geometry" data-id="%1$s" data-lat="%2$s" data-lng="%3$s"
+					data-zoom="%4$d" data-geojson="%5$s" style="%6$s"></div>',
+			esc_attr( $this->id . '-' . $post_id ),
+			esc_attr( $meta['lat'] ),
+			esc_attr( $meta['lng'] ),
+			esc_attr( $meta['zoom'] ),
+			esc_attr( $meta['geojson'] ),
+			"width: 100%%; height: 300px;"
+		);
+
+		return $map;
 	}
 
 	/**
