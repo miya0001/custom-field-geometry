@@ -17,7 +17,7 @@ class Custom_Field_Map_Tests extends WP_UnitTestCase
 		do_action( 'admin_enqueue_scripts', 'post-new.php' );
 		$this->assertTrue( wp_style_is( 'leaflet' ) );
 		$this->assertTrue( wp_script_is( 'leaflet' ) );
-		$this->assertTrue( wp_script_is( 'custom-field-geometry' ) );
+		$this->assertTrue( wp_script_is( 'custom-field-geometry-admin' ) );
 	}
 
 	/**
@@ -35,7 +35,7 @@ class Custom_Field_Map_Tests extends WP_UnitTestCase
 		do_action( 'admin_enqueue_scripts', 'post-new.php' );
 		$this->assertTrue( wp_style_is( 'leaflet' ) );
 		$this->assertTrue( wp_script_is( 'leaflet' ) );
-		$this->assertTrue( wp_script_is( 'custom-field-geometry' ) );
+		$this->assertTrue( wp_script_is( 'custom-field-geometry-admin' ) );
 	}
 
 	/**
