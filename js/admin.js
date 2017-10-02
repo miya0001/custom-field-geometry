@@ -35,8 +35,6 @@ if ( document.querySelector( '#' + custom_field_geometry_id + ' .lat' ).value &&
 	config.zoom = document.querySelector( '#' + custom_field_geometry_id + ' .zoom' ).value;
 }
 
-window.icon_num = 0;
-
 var div = document.createElement( 'div' );
 div.style.width = '100%';
 div.style.height = '100%';
@@ -86,54 +84,9 @@ var drawControl = new L.Control.Draw( {
 	}
 } ).addTo( map );
 
-var icon_images = [
-	'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
-	'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-	'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-	'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
-	'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
-	'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
-	'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
-	'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png'
-]
-
-var icons = []
-for ( var i = 0; i < icon_images.length; i++ ) {
-	icons.push( new L.Icon( {
-		iconUrl: icon_images[i],
-		shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-		iconSize: [25, 41],
-		iconAnchor: [12, 41],
-		popupAnchor: [1, -34],
-		shadowSize: [41, 41]
-	} ) )
-}
-
-map.on( L.Draw.Event.DRAWSTART, function( e ) {
-	drawControl.setDrawingOptions( {
-		marker: {
-			icon: icons[ icon_num % icons.length ]
-		}
-	} );
-} );
-
 map.on( L.Draw.Event.CREATED, function( e ) {
 	var type = e.layerType,
-		layer = e.layer,
-		feature = layer.feature = layer.feature || {};
-	feature.type = feature.type || "Feature";
-	var props = feature.properties = feature.properties || {};
-
-	if ( type === 'marker' ) {
-		props.icon = icon_num % icons.length;
-		layer.setIcon( icons[ props.icon ] );
-		layer.on( 'click', function( e ) {
-			icon_num += 1;
-			var n = icon_num % icons.length;
-			e.target.setIcon( icons[ n ] );
-			props.icon = n;
-		} )
-	}
+		layer = e.layer;
 	featureGroup.addLayer(layer);
 } );
 
@@ -141,9 +94,6 @@ var geojson = document.querySelector( '#' + custom_field_geometry_id + ' .geojso
 if ( geojson ) {
 	var geojsonLayer = L.geoJson( JSON.parse( geojson ) );
 	geojsonLayer.eachLayer( function( l ) {
-		if ( 'Point' === l.feature.geometry.type ) {
-			l.setIcon( icons[ l.feature.properties.icon ] )
-		}
 		featureGroup.addLayer( l );
 	} );
 }
