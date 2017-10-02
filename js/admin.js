@@ -58,8 +58,12 @@ if ( isNaN( parseFloat( config.lng ) ) ) {
 	config.lng = 0
 }
 
-var map = L.map( div, { scrollWheelZoom: false } )
-	.setView( new L.LatLng( config.lat, config.lng ), config.zoom )
+var map = L.map( div, {
+	scrollWheelZoom: false,
+	dragging: !L.Browser.mobile,
+	tap: false
+} )
+.setView( new L.LatLng( config.lat, config.lng ), config.zoom )
 
 var layers = config.layers
 
