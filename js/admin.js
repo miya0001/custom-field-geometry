@@ -80,11 +80,12 @@ var featureGroup = L.featureGroup().addTo(map);
 var drawControl = new L.Control.Draw( {
 	draw: config.controls,
 	edit: {
-		featureGroup: featureGroup
+		featureGroup: featureGroup,
+		edit: false
 	}
 } ).addTo( map );
 
-map.on( L.Draw.Event.CREATED, function( e ) {
+map.on( 'draw:created', function( e ) {
 	var type = e.layerType,
 		layer = e.layer;
 	featureGroup.addLayer(layer);
@@ -97,10 +98,6 @@ if ( geojson ) {
 		featureGroup.addLayer( l );
 	} );
 }
-
-map.on( 'draw:created', function( e ) {
-	featureGroup.addLayer( e.layer );
-} );
 
 map.on( 'moveend', function( e ) {
 	var zoom = e.target._zoom
