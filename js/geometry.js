@@ -20,6 +20,7 @@ Geometry.prototype.display = function( map_container ) {
 
 	// Initialize the map.
 	var map = L.map( map_container, {
+		scrollWheelZoom: false,
 		dragging: !L.Browser.mobile,
 		tap: false
 	} );
