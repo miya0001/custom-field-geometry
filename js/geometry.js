@@ -25,7 +25,7 @@ Geometry.prototype.display = function( map_container ) {
 		tap: false
 	} );
 	map.setView( [ lat, lng ], zoom );
-	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
 
